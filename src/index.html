@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Admin-Client Task Management System built with vanilla JavaScript using MVVM architecture">
+    <title>Task Manager | Admin-Client System</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- ==========================================
+         LOGIN SCREEN - Role Selection
+         ========================================== -->
+    <div id="login-screen" class="screen login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="logo">
+                    <span class="logo-icon">✓</span>
+                    <h1>Task Manager</h1>
+                </div>
+                <p class="tagline">Admin-Client System | MVVM Architecture</p>
+            </div>
+
+            <div class="login-content">
+                <h2>Select User to Login</h2>
+                <p class="login-subtitle">Choose a role to explore the system</p>
+
+                <div id="user-list" class="user-list">
+                    <!-- Users will be rendered here dynamically -->
+                </div>
+            </div>
+
+            <div class="login-footer">
+                <p>Built with vanilla JavaScript using <strong>MVVM Architecture</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         APP SCREEN - Main Application
+         ========================================== -->
+    <div id="app-screen" class="screen app-screen" style="display: none;">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <div class="logo-small">
+                    <span class="logo-icon">✓</span>
+                    <span class="logo-text">Task Manager</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="current-user">
+                    <span class="user-icon">👤</span>
+                    <span id="current-user-name" class="user-name">User</span>
+                    <span id="current-user-role" class="user-role-tag">ROLE</span>
+                </div>
+                <button id="logout-btn" class="btn btn-logout">
+                    <span class="btn-icon">🚪</span>
+                    Logout
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="app-main">
+            <!-- ==========================================
+                 ADMIN DASHBOARD
+                 ========================================== -->
+            <div id="admin-dashboard" class="dashboard admin-dashboard" style="display: none;">
+                <!-- Statistics Section -->
+                <section class="stats-section">
+                    <h2 class="section-title">📊 Dashboard Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card total">
+                            <div class="stat-icon">📋</div>
+                            <div class="stat-content">
+                                <span id="stat-total" class="stat-value">0</span>
+                                <span class="stat-label">Total Tasks</span>
+                            </div>
+                        </div>
+                        <div class="stat-card pending">
+                            <div class="stat-icon">⏳</div>
+                            <div class="stat-content">
+                                <span id="stat-pending" class="stat-value">0</span>
+                                <span class="stat-label">Pending</span>
+                            </div>
+                        </div>
+                        <div class="stat-card completed">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-content">
+                                <span id="stat-completed" class="stat-value">0</span>
+                                <span class="stat-label">Completed</span>
+                            </div>
+                        </div>
+                        <div class="stat-card overdue">
+                            <div class="stat-icon">⚠️</div>
+                            <div class="stat-content">
+                                <span id="stat-overdue" class="stat-value">0</span>
+                                <span class="stat-label">Overdue</span>
+                            </div>
+                        </div>
+                        <div class="stat-card progress">
+                            <div class="stat-icon">📈</div>
+                            <div class="stat-content">
+                                <span id="completion-rate" class="stat-value">0%</span>
+                                <span class="stat-label">Completion Rate</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Create Task Form -->
+                <section class="form-section">
+                    <div class="card form-card">
+                        <h2 id="form-title" class="card-title">
+                            <span class="card-icon">➕</span>
+                            Create New Task
+                        </h2>
+                        <form id="task-form" class="task-form">
+                            <div class="form-row">
+                                <div class="form-group flex-2">
+                                    <label for="task-title">Task Title *</label>
+                                    <input type="text" id="task-title" name="title" placeholder="Enter task title..."
+                                        required autocomplete="off">
+                                </div>
+                                <div class="form-group">
+                                    <label for="task-client">Assign To</label>
+                                    <select id="task-client" name="client">
+                                        <option value="">-- Unassigned --</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="task-description">Description</label>
+                                <textarea id="task-description" name="description"
+                                    placeholder="Enter task description..." rows="3"></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="task-priority">Priority</label>
+                                    <select id="task-priority" name="priority">
+                                        <option value="low">Low</option>
+                                        <option value="medium" selected>Medium</option>
+                                        <option value="high">High</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="task-due-date">Due Date</label>
+                                    <input type="date" id="task-due-date" name="dueDate">
+                                </div>
+                                <div class="form-group form-actions">
+                                    <button type="submit" id="submit-btn" class="btn btn-primary">
+                                        <span class="btn-icon">➕</span>
+                                        Create Task
+                                    </button>
+                                    <button type="button" id="cancel-edit-btn" class="btn btn-secondary"
+                                        style="display: none;">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Task List Section -->
+                <section class="tasks-section">
+                    <div class="card tasks-card">
+                        <div class="tasks-header">
+                            <h2 class="card-title">
+                                <span class="card-icon">📝</span>
+                                All Tasks
+                            </h2>
+                            <div class="tasks-controls">
+                                <div class="search-box">
+                                    <span class="search-icon">🔍</span>
+                                    <input type="text" id="search-input" placeholder="Search tasks...">
+                                </div>
+                                <select id="client-filter" class="filter-select">
+                                    <option value="all">All Clients</option>
+                                    <option value="unassigned">Unassigned</option>
+                                </select>
+                                <button id="clear-filters-btn" class="btn btn-small">Clear Filters</button>
+                            </div>
+                        </div>
+                        <div class="filter-tabs">
+                            <button class="status-filter-btn active" data-filter="all">All</button>
+                            <button class="status-filter-btn" data-filter="pending">Pending</button>
+                            <button class="status-filter-btn" data-filter="in_progress">In Progress</button>
+                            <button class="status-filter-btn" data-filter="completed">Completed</button>
+                        </div>
+                        <div id="task-list" class="task-list">
+                            <!-- Tasks will be rendered here -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ==========================================
+                 CLIENT DASHBOARD
+                 ========================================== -->
+            <div id="client-dashboard" class="dashboard client-dashboard" style="display: none;">
+                <!-- Client Stats -->
+                <section class="stats-section">
+                    <h2 class="section-title">📋 My Tasks</h2>
+                    <div class="stats-grid client-stats">
+                        <div class="stat-card total">
+                            <div class="stat-icon">📋</div>
+                            <div class="stat-content">
+                                <span id="client-total-count" class="stat-value">0</span>
+                                <span class="stat-label">Assigned to Me</span>
+                            </div>
+                        </div>
+                        <div class="stat-card pending">
+                            <div class="stat-icon">⏳</div>
+                            <div class="stat-content">
+                                <span id="client-pending-count" class="stat-value">0</span>
+                                <span class="stat-label">Pending</span>
+                            </div>
+                        </div>
+                        <div class="stat-card completed">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-content">
+                                <span id="client-completed-count" class="stat-value">0</span>
+                                <span class="stat-label">Completed</span>
+                            </div>
+                        </div>
+                        <div class="stat-card overdue">
+                            <div class="stat-icon">⚠️</div>
+                            <div class="stat-content">
+                                <span id="client-overdue-count" class="stat-value">0</span>
+                                <span class="stat-label">Overdue</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Notifications -->
+                <section class="notifications-section">
+                    <div class="notifications-header">
+                        <h3>🔔 Notifications <span id="notification-badge" class="notification-badge"
+                                style="display: none;">0</span></h3>
+                    </div>
+                    <div id="notification-list" class="notification-list">
+                        <p class="no-notifications">No notifications</p>
+                    </div>
+                </section>
+
+                <!-- Client Task List -->
+                <section class="tasks-section">
+                    <div class="card tasks-card">
+                        <div class="tasks-header">
+                            <h2 class="card-title">
+                                <span class="card-icon">📝</span>
+                                My Assigned Tasks
+                            </h2>
+                            <div class="tasks-controls">
+                                <div class="search-box">
+                                    <span class="search-icon">🔍</span>
+                                    <input type="text" id="client-search-input" placeholder="Search my tasks...">
+                                </div>
+                                <button id="client-clear-filters-btn" class="btn btn-small">Clear Filters</button>
+                            </div>
+                        </div>
+                        <div class="filter-tabs">
+                            <button class="client-status-filter-btn active" data-filter="all">All</button>
+                            <button class="client-status-filter-btn" data-filter="pending">Pending</button>
+                            <button class="client-status-filter-btn" data-filter="completed">Completed</button>
+                        </div>
+                        <div id="client-task-list" class="task-list">
+                            <!-- Tasks will be rendered here -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>MVVM Architecture: Model → ViewModel → View | Observer Pattern</p>
+        </footer>
+
+        <!-- Task Detail Modal (Client) -->
+        <div id="task-detail-modal" class="modal">
+            <div class="modal-content">
+                <button id="close-modal-btn" class="modal-close">×</button>
+                <div id="task-detail-content">
+                    <!-- Task details will be rendered here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Entry Point (ES6 Module) -->
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>

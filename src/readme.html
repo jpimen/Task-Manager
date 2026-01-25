@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README - Task Manager Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --border: #30363d;
+            --code-bg: #1e2430;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem 3rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        p {
+            margin: 1rem 0;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            background: var(--code-bg);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+            color: var(--text-secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th,
+        td {
+            border: 1px solid var(--border);
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        th {
+            background: var(--code-bg);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .badge-blue {
+            background: #1f6feb;
+            color: white;
+        }
+
+        .badge-yellow {
+            background: #d29922;
+            color: black;
+        }
+
+        .badge-green {
+            background: #238636;
+            color: white;
+        }
+
+        .badge-purple {
+            background: #8957e5;
+            color: white;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #58a6ff, #1f6feb);
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .architecture {
+            background: var(--code-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            white-space: pre;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📋 Task Manager - Admin-Client System</h1>
+
+        <p>
+            <span class="badge badge-blue">MVVM Architecture</span>
+            <span class="badge badge-yellow">JavaScript ES6+</span>
+            <span class="badge badge-green">LocalStorage</span>
+            <span class="badge badge-purple">Admin | Client Roles</span>
+        </p>
+
+        <p>A clean and scalable Admin-Client Task Management System built with vanilla JavaScript following the MVVM
+            (Model–View–ViewModel) architecture pattern.</p>
+
+        <h2>🎯 System Overview</h2>
+        <p>This application demonstrates a real-world <strong>Admin → Client task assignment</strong> workflow:</p>
+        <ul>
+            <li><strong>Admins</strong> create, edit, and assign tasks to clients</li>
+            <li><strong>Clients</strong> view and manage only tasks assigned to them</li>
+            <li>Strict <strong>role-based access control</strong></li>
+            <li>Complete <strong>data persistence</strong> with localStorage</li>
+        </ul>
+
+        <h2>🚀 Features</h2>
+
+        <h3>👔 Admin Features</h3>
+        <ul>
+            <li>✅ Create new tasks with title, description, priority, and due date</li>
+            <li>✅ Edit and delete tasks</li>
+            <li>✅ Assign tasks to specific clients</li>
+            <li>✅ View all tasks and their status</li>
+            <li>✅ Dashboard statistics (total, pending, completed, overdue)</li>
+            <li>✅ Filter and search tasks</li>
+        </ul>
+
+        <h3>👤 Client Features</h3>
+        <ul>
+            <li>✅ View only tasks assigned to them</li>
+            <li>✅ Mark tasks as completed or pending</li>
+            <li>✅ View task details (title, description, due date)</li>
+            <li>✅ Overdue task notifications</li>
+            <li>✅ Filter and search assigned tasks</li>
+        </ul>
+
+        <h2>📁 Project Structure</h2>
+        <pre><code>/src
+ ├── model/
+ │    ├── taskModel.js       # Task data structure
+ │    └── userModel.js       # User data & roles
+ ├── view/
+ │    ├── adminView.js       # Admin Dashboard UI
+ │    └── clientView.js      # Client Dashboard UI
+ ├── viewmodel/
+ │    ├── adminViewModel.js  # Admin business logic
+ │    └── clientViewModel.js # Client business logic
+ ├── services/
+ │    ├── authService.js     # Authentication
+ │    └── storageService.js  # localStorage
+ ├── index.js                # Entry point
+ ├── index.html              # Main HTML
+ └── styles.css              # Styling</code></pre>
+
+        <h2>🏗️ MVVM Architecture</h2>
+        <div class="architecture">
+            ┌──────────────────────────────────────────────────────┐
+            │ USER │
+            │ ↓↑ │
+            │ ┌────────────────────────────────────────────────┐ │
+            │ │ VIEW │ │
+            │ │ • Renders UI from ViewModel data │ │
+            │ │ • Captures user interactions │ │
+            │ │ • DOM manipulation ONLY │ │
+            │ └────────────────────────────────────────────────┘ │
+            │ ↓↑ │
+            │ Subscribe / Notify │
+            │ ↓↑ │
+            │ ┌────────────────────────────────────────────────┐ │
+            │ │ VIEWMODEL │ │
+            │ │ • Handles user commands │ │
+            │ │ • Updates Model │ │
+            │ │ • Notifies View of changes │ │
+            │ └────────────────────────────────────────────────┘ │
+            │ ↓↑ │
+            │ ┌────────────────────────────────────────────────┐ │
+            │ │ MODEL │ │
+            │ │ • Data structures │ │
+            │ │ • Business logic │ │
+            │ │ • Independent of View │ │
+            │ └────────────────────────────────────────────────┘ │
+            └──────────────────────────────────────────────────────┘</div>
+
+        <h2>🛠️ How to Run</h2>
+        <ol>
+            <li>Start a local web server in the <code>/src</code> directory</li>
+            <li>Open <code>http://localhost:8080</code> in your browser</li>
+            <li>Click on a user to login (Admin or Client)</li>
+            <li>Explore the role-specific dashboard!</li>
+        </ol>
+
+        <h2>🔐 Default Users</h2>
+        <table>
+            <tr>
+                <th>User</th>
+                <th>Role</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>Admin User</td>
+                <td>Admin</td>
+                <td>Create and assign tasks</td>
+            </tr>
+            <tr>
+                <td>John Doe</td>
+                <td>Client</td>
+                <td>Receive and manage tasks</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>Client</td>
+                <td>Receive and manage tasks</td>
+            </tr>
+            <tr>
+                <td>Bob Johnson</td>
+                <td>Client</td>
+                <td>Receive and manage tasks</td>
+            </tr>
+        </table>
+
+        <a href="index.html" class="nav-link">🚀 Launch Task Manager</a>
+    </div>
+</body>
+
+</html>
