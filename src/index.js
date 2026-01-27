@@ -19,6 +19,7 @@
  */
 
 import { authService } from './services/authService.js';
+import { themeService } from './services/themeService.js';
 import { AdminViewModel } from './viewmodel/adminViewModel.js';
 import { ClientViewModel } from './viewmodel/clientViewModel.js';
 import { AdminView } from './view/adminView.js';
@@ -42,6 +43,7 @@ class App {
         this.currentUserName = document.getElementById('current-user-name');
         this.currentUserRole = document.getElementById('current-user-role');
         this.logoutBtn = document.getElementById('logout-btn');
+        this.themeToggleBtn = document.getElementById('theme-toggle-btn');
 
         // Subscribe to auth state changes
         authService.subscribe(this.onAuthStateChange.bind(this));
@@ -69,6 +71,11 @@ class App {
         // Logout button
         this.logoutBtn?.addEventListener('click', () => {
             this.handleLogout();
+        });
+
+        // Theme toggle button
+        this.themeToggleBtn?.addEventListener('click', () => {
+            themeService.toggle();
         });
     }
 
@@ -229,6 +236,7 @@ function initApp() {
     // Make available for debugging
     window.__app = app;
     window.__authService = authService;
+    window.__themeService = themeService;
 
     console.log('✅ Application initialized successfully!');
     console.log('📊 Architecture: Model → ViewModel ← View');
