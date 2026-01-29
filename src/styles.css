@@ -1561,3 +1561,284 @@ select:focus-visible {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--border-light);
 }
+
+/* ==========================================
+   NEW FEATURES STYLES
+   ========================================== */
+
+/* Analytics Section */
+.analytics-section {
+    margin: var(--spacing-xl) 0;
+}
+
+.analytics-card {
+    padding: var(--spacing-xl);
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.analytics-item {
+    background: var(--bg-input);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    transition: all var(--transition-normal);
+}
+
+.analytics-item:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-light);
+    transform: translateY(-2px);
+}
+
+.analytics-label {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.analytics-value {
+    color: var(--primary-light);
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+}
+
+/* Activity Log Section */
+.activity-section {
+    margin: var(--spacing-xl) 0;
+}
+
+.activity-card {
+    padding: var(--spacing-xl);
+}
+
+.activity-log {
+    margin-top: var(--spacing-lg);
+}
+
+.activity-item {
+    display: flex;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+    border-left: 3px solid var(--primary-color);
+    background: var(--bg-input);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    transition: all var(--transition-normal);
+}
+
+.activity-item:hover {
+    background: var(--bg-card-hover);
+    transform: translateX(4px);
+}
+
+.activity-icon {
+    font-size: var(--font-size-2xl);
+    flex-shrink: 0;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activity-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.activity-description {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.activity-type {
+    display: inline-block;
+    background: var(--primary-dark);
+    color: var(--text-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+.activity-timestamp {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+}
+
+.no-activities {
+    text-align: center;
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    color: var(--text-muted);
+}
+
+/* Category Styles */
+.category-badge {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.category-color-blue {
+    background-color: #3498db;
+}
+
+.category-color-green {
+    background-color: #2ecc71;
+}
+
+.category-color-red {
+    background-color: #e74c3c;
+}
+
+.category-color-purple {
+    background-color: #9b59b6;
+}
+
+.category-color-orange {
+    background-color: #e67e22;
+}
+
+.category-color-pink {
+    background-color: #e91e63;
+}
+
+/* Subtask Styles */
+.subtasks-section {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+}
+
+.subtasks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.subtasks-progress {
+    background: var(--bg-input);
+    border-radius: var(--radius-full);
+    height: 6px;
+    overflow: hidden;
+    margin-bottom: var(--spacing-md);
+}
+
+.subtasks-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--success-color), var(--success-light));
+    border-radius: var(--radius-full);
+    transition: width var(--transition-normal);
+}
+
+.subtask-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--bg-input);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    transition: all var(--transition-normal);
+}
+
+.subtask-item:hover {
+    background: var(--bg-card-hover);
+}
+
+.subtask-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--success-color);
+}
+
+.subtask-title {
+    flex: 1;
+    color: var(--text-primary);
+}
+
+.subtask-title.completed {
+    color: var(--text-secondary);
+    text-decoration: line-through;
+}
+
+.subtask-hours {
+    background: var(--bg-card);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.subtask-delete {
+    background: transparent;
+    color: var(--danger-color);
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-size-lg);
+    padding: 0;
+    transition: all var(--transition-fast);
+}
+
+.subtask-delete:hover {
+    color: var(--danger-light);
+    transform: scale(1.2);
+}
+
+/* Task Statistics Enhancement */
+.stat-card {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+    transition: all var(--transition-normal);
+    overflow: hidden;
+    position: relative;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(79, 140, 255, 0.1), transparent);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.stat-card:hover {
+    border-color: var(--border-light);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-card:hover::before {
+    opacity: 1;
+}

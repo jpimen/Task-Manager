@@ -14,7 +14,10 @@
 const STORAGE_KEYS = {
     TASKS: 'mvvm_admin_client_tasks',
     USERS: 'mvvm_admin_client_users',
-    CURRENT_USER: 'mvvm_admin_client_current_user'
+    CURRENT_USER: 'mvvm_admin_client_current_user',
+    CATEGORIES: 'mvvm_admin_client_categories',
+    ACTIVITIES: 'mvvm_admin_client_activities',
+    SUBTASKS: 'mvvm_admin_client_subtasks'
 };
 
 /**
@@ -227,6 +230,117 @@ export class StorageService {
             };
         } catch (error) {
             return null;
+        }
+    }
+
+    // ==========================================
+    // CATEGORY STORAGE
+    // ==========================================
+
+    /**
+     * Saves categories to localStorage
+     * @param {Object[]} categories - Array of category objects
+     * @returns {boolean} True if successful
+     */
+    static saveCategories(categories) {
+        try {
+            const serialized = JSON.stringify(categories);
+            localStorage.setItem(STORAGE_KEYS.CATEGORIES, serialized);
+            return true;
+        } catch (error) {
+            console.error('Error saving categories to localStorage:', error);
+            return false;
+        }
+    }
+
+    /**
+     * Loads categories from localStorage
+     * @returns {Object[]} Array of category objects
+     */
+    static loadCategories() {
+        try {
+            const serialized = localStorage.getItem(STORAGE_KEYS.CATEGORIES);
+            if (serialized === null) {
+                return [];
+            }
+            return JSON.parse(serialized);
+        } catch (error) {
+            console.error('Error loading categories from localStorage:', error);
+            return [];
+        }
+    }
+
+    // ==========================================
+    // ACTIVITY STORAGE
+    // ==========================================
+
+    /**
+     * Saves activities to localStorage
+     * @param {Object[]} activities - Array of activity objects
+     * @returns {boolean} True if successful
+     */
+    static saveActivities(activities) {
+        try {
+            const serialized = JSON.stringify(activities);
+            localStorage.setItem(STORAGE_KEYS.ACTIVITIES, serialized);
+            return true;
+        } catch (error) {
+            console.error('Error saving activities to localStorage:', error);
+            return false;
+        }
+    }
+
+    /**
+     * Loads activities from localStorage
+     * @returns {Object[]} Array of activity objects
+     */
+    static loadActivities() {
+        try {
+            const serialized = localStorage.getItem(STORAGE_KEYS.ACTIVITIES);
+            if (serialized === null) {
+                return [];
+            }
+            return JSON.parse(serialized);
+        } catch (error) {
+            console.error('Error loading activities from localStorage:', error);
+            return [];
+        }
+    }
+
+    // ==========================================
+    // SUBTASK STORAGE
+    // ==========================================
+
+    /**
+     * Saves subtasks to localStorage
+     * @param {Object[]} subtasks - Array of subtask objects
+     * @returns {boolean} True if successful
+     */
+    static saveSubtasks(subtasks) {
+        try {
+            const serialized = JSON.stringify(subtasks);
+            localStorage.setItem(STORAGE_KEYS.SUBTASKS, serialized);
+            return true;
+        } catch (error) {
+            console.error('Error saving subtasks to localStorage:', error);
+            return false;
+        }
+    }
+
+    /**
+     * Loads subtasks from localStorage
+     * @returns {Object[]} Array of subtask objects
+     */
+    static loadSubtasks() {
+        try {
+            const serialized = localStorage.getItem(STORAGE_KEYS.SUBTASKS);
+            if (serialized === null) {
+                return [];
+            }
+            return JSON.parse(serialized);
+        } catch (error) {
+            console.error('Error loading subtasks from localStorage:', error);
+            return [];
         }
     }
 }

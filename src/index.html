@@ -120,6 +120,47 @@
                     </div>
                 </section>
 
+                <!-- 📊 Analytics Section (New Feature) -->
+                <section class="analytics-section">
+                    <div class="card analytics-card">
+                        <h2 class="card-title">
+                            <span class="card-icon">📊</span>
+                            Performance Analytics
+                        </h2>
+                        <div class="analytics-grid">
+                            <div class="analytics-item">
+                                <span class="analytics-label">Avg Completion Time</span>
+                                <span id="analytics-avg-time" class="analytics-value">0 days</span>
+                            </div>
+                            <div class="analytics-item">
+                                <span class="analytics-label">High Priority Tasks</span>
+                                <span id="analytics-high-priority" class="analytics-value">0</span>
+                            </div>
+                            <div class="analytics-item">
+                                <span class="analytics-label">Tasks In Progress</span>
+                                <span id="analytics-in-progress" class="analytics-value">0</span>
+                            </div>
+                            <div class="analytics-item">
+                                <span class="analytics-label">Unassigned Tasks</span>
+                                <span id="analytics-unassigned" class="analytics-value">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 📋 Activity Log Section (New Feature) -->
+                <section class="activity-section">
+                    <div class="card activity-card">
+                        <h2 class="card-title">
+                            <span class="card-icon">📋</span>
+                            Recent Activity
+                        </h2>
+                        <div id="activity-log" class="activity-log">
+                            <p class="no-activities">No activities yet</p>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- Create Task Form -->
                 <section class="form-section">
                     <div class="card form-card">
@@ -138,6 +179,12 @@
                                     <label for="task-client">Assign To</label>
                                     <select id="task-client" name="client">
                                         <option value="">-- Unassigned --</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="task-category">Category</label>
+                                    <select id="task-category" name="category">
+                                        <option value="">-- No Category --</option>
                                     </select>
                                 </div>
                             </div>

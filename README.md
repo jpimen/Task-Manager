@@ -42,25 +42,40 @@ This application demonstrates a real-world **Admin → Client task assignment** 
 - 💾 **Persistent storage** using localStorage
 - 🎨 **Modern dark theme** with animations
 
+### ✨ NEW ENHANCED FEATURES (v2.0)
+- 📁 **Category System** - Organize tasks by custom categories with color coding
+- 📋 **Activity Log** - Complete audit trail of all task changes and actions
+- 📊 **Performance Analytics** - Comprehensive insights on task completion and team productivity
+- 🎯 **Subtasks** - Break complex tasks into smaller, manageable subtasks
+- ⏱️ **Time Tracking** - Estimated vs actual completion time analysis
+- 👥 **Client Performance Metrics** - Individual performance analytics per client
+- 📈 **Productivity Trends** - 7-day and 30-day productivity analysis
+
 ## 📁 Project Structure
 
 ```
 /src
  ├── model/
- │    ├── taskModel.js       # Task data structure and business logic
- │    └── userModel.js       # User data structure and roles
+ │    ├── taskModel.js           # Task data structure and business logic
+ │    ├── userModel.js           # User data structure and roles
+ │    ├── categoryModel.js       # NEW: Category/tagging system
+ │    ├── activityModel.js       # NEW: Activity log tracking
+ │    └── subtaskModel.js        # NEW: Subtasks decomposition
  ├── view/
- │    ├── adminView.js       # Admin Dashboard UI rendering
- │    └── clientView.js      # Client Dashboard UI rendering
+ │    ├── adminView.js           # Admin Dashboard UI rendering
+ │    └── clientView.js          # Client Dashboard UI rendering
  ├── viewmodel/
- │    ├── adminViewModel.js  # Admin business logic and state
- │    └── clientViewModel.js # Client business logic and state
+ │    ├── adminViewModel.js      # Admin business logic and state
+ │    └── clientViewModel.js     # Client business logic and state
  ├── services/
- │    ├── authService.js     # Authentication and session management
- │    └── storageService.js  # localStorage persistence layer
- ├── index.js                # Application entry point
- ├── index.html              # Main HTML file
- └── styles.css              # Modern CSS styling
+ │    ├── authService.js         # Authentication and session management
+ │    ├── storageService.js      # localStorage persistence layer
+ │    └── analyticsService.js    # NEW: Performance analytics engine
+ ├── index.js                    # Application entry point
+ ├── index.html                  # Main HTML file
+ ├── styles.css                  # Modern CSS styling
+ ├── NEW_FEATURES.md             # NEW: Detailed feature documentation
+ └── IMPLEMENTATION_GUIDE.md     # NEW: Integration guide for developers
 ```
 
 ## 🏗️ MVVM Architecture
@@ -125,11 +140,61 @@ This application demonstrates a real-world **Admin → Client task assignment** 
    - Subscribes to ViewModel for updates
    - **Never accesses Model directly**
 
-4. **Services Layer** (`authService.js`, `storageService.js`)
+4. **Services Layer** (`authService.js`, `storageService.js`, `analyticsService.js`)
    - Authentication with role-based login
    - Data persistence abstraction
+   - Performance analytics engine
 
-## 🛠️ Getting Started
+## 🎁 Enhanced Features v2.0
+
+### 📁 Category System
+Organize tasks into custom categories for better project management:
+- Create custom categories with colors
+- Assign tasks to categories
+- Filter by category
+- Color-coded visual identification
+
+### 📋 Activity Log
+Complete audit trail of all task changes:
+- Automatic activity logging
+- Track who changed what and when
+- Chronological history view
+- Activity type classification
+
+### 📊 Performance Analytics
+Comprehensive insights into task management:
+- Completion rate statistics
+- Client performance metrics
+- Priority distribution analysis
+- Status breakdown
+- Overdue task analytics
+- Time completion trends
+- 7-day and 30-day productivity trends
+
+### 🎯 Subtasks
+Break complex tasks into manageable pieces:
+- Create multiple subtasks per task
+- Estimated hours tracking
+- Individual completion status
+- Automatic progress calculation
+- Visual progress bar
+
+### ⏱️ Time Analytics
+Track actual vs estimated completion:
+- Average completion time
+- Fastest and slowest completions
+- Time-based productivity analysis
+- Performance trend visualization
+
+---
+
+## 📖 Documentation
+
+For detailed information about new features:
+- **[NEW_FEATURES.md](NEW_FEATURES.md)** - Complete feature documentation
+- **[IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md)** - Developer integration guide
+
+---
 
 ### Prerequisites
 - Any modern web browser (Chrome, Firefox, Edge, Safari)
